@@ -18,6 +18,18 @@ namespace OASFrontEnd.Transversales
             return respuestaApiConsulta;
         }
 
+        public async Task<T> GetData<T>(string serviceName, int id, string parameterName)
+        {
+            var parametros = HttpUtility.ParseQueryString(string.Empty);
+            parametros[parameterName] = id.ToString();
+
+            var respuestaApiConsulta = await WebApi.ConsumirWebApiGetAsync<T>(
+                        new UriBuilder(OASSettings.DataServiceUrl + serviceName) { Query = parametros.ToString() }.Uri.ToString()
+                );
+
+            return respuestaApiConsulta;
+        }
+
         public async Task<bool> SendData(string serviceName, object entityData, WebApi.RequestType requestType)
         {
             var respuestaApiConsulta = await WebApi.ConsumirWebApiPostAsync<bool>(

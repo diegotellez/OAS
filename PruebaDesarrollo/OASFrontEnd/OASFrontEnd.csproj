@@ -184,6 +184,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\ResponsablesController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -267,6 +268,8 @@
     <Content Include="Views\Responsables\Details.cshtml" />
     <Content Include="Views\Responsables\Edit.cshtml" />
     <Content Include="Views\Responsables\Index.cshtml" />
+    <Content Include="Views\Reportes\ActividadesPorResponsable.cshtml" />
+    <Content Include="Views\Reportes\ActividadesPorEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

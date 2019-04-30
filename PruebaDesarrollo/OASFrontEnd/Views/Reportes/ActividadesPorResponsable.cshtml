@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Entidades.Actividad>
+@{
+    ViewBag.Title = "Reporte por Responsable";
+}
+
+<h2>Reporte por responsable</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Seleccione el responsable:</h4>
+
+        <div class="form-group">
+            <h5>Responsable</h5>
+            <div class="col-md-10">
+                @Html.DropDownList("IdResponsable", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.IdEstado, "IdEstado", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdEstado", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdEstado, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Consultar" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@if (Model != null)
+{
+    if (Model.Any())
+    {
+        <div class="alert alert-info" role="alert">
+            <strong>@Model.Count()</strong> Actividades encontradas!
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>NO</strong> se encontraron actividades con el responsable seleccionado!
+        </div>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoActividad.NombreEstado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponsableActividad.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaLimite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoActividad.NombreEstado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResponsableActividad.Nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCreacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaLimite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdActividad }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdActividad })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
