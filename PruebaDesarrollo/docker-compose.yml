@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  oasfrontend:
+    image: oasfrontend
+    build:
+      context: .\OASFrontEnd
+      dockerfile: Dockerfile

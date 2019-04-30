@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Entidades.Actividad>
+
+@{
+    ViewBag.Title = "Actividades";
+}
+
+<h2>Actividades</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoActividad.NombreEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponsableActividad.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaLimite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoActividad.NombreEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponsableActividad.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaLimite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdActividad }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdActividad })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,32 @@
+﻿@model Entidades.Estado
+
+@{
+    ViewBag.Title = "Estados";
+}
+
+<h2>Estados</h2>
+
+<h3>Confirma que desea eliminar el regi8stro?</h3>
+<div>
+    <h4>Estado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreEstado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>
